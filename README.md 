@@ -1,0 +1,28 @@
+# Overview
+**Task Tracker** is a simple web application that lets users add, complete, filter, and persist tasks in the browser using localStorage.  
+The goal was to practice core web skills (HTML, CSS, JavaScript), build interactive UI, and deliver clean, documented code.
+
+[Software Demo Video](https://youtu.be/xxxxxxxxxxx)
+
+# Development Environment
+- HTML, CSS, JavaScript (Vanilla)
+- Visual Studio Code
+- Git & GitHub
+- No frameworks required
+
+# Program Functionality
+- Add tasks with title and priority
+- Mark tasks as done/undone
+- Edit and delete tasks
+- Filter by status (all/open/done) and by priority (low/normal/high)
+- Persistent storage with localStorage
+- Responsive and accessible UI
+
+# How to Run
+1. Clone the repository  
+2. Open `index.html` in your browser (or use VS Code Live Server)
+
+# Useful Websites
+- https://developer.mozilla.org/
+- https://web.dev/learn/
+- https://docs.github.com/en

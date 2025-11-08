@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Task Tracker</h1>
+        <p class="subtitle">Add, complete, filter, and persist tasks (localStorage).</p>
+    </header>
+
+    <main>
+        <section aria-labelledby="add-task-title" class="card">
+            <h2 id="add-task-title">Add a new task</h2>
+            <form id="task-form">
+                <label>
+                    Task title
+                    <input type="text" id="task-title" name="title" placeholder="e.g., Study arrays" required />
+                </label>
+                <label>
+                    Priority
+                    <select id="task-priority" name="priority">
+                        <option value="low">Low</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="high">High</option>
+                    </select>
+                </label>
+                <button type="submit">Add Task</button>
+            </form>
+        </section>
+
+        <section aria-labelledby="filters-title" class="card">
+            <h2 id="filters-title">Filters</h2>
+            <div class="filters">
+                <label>
+                    Status
+                    <select id="filter-status">
+                        <option value="all">All</option>
+                        <option value="open">Open</option>
+                        <option value="done">Done</option>
+                    </select>
+                </label>
+                <label>
+                    Priority
+                    <select id="filter-priority">
+                        <option value="all">All</option>
+                        <option value="low">Low</option>
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                    </select>
+                </label>
+                <button id="clear-all" class="danger">Clear All</button>
+            </div>
+        </section>
+
+        <section aria-labelledby="list-title" class="card">
+            <div class="list-header">
+                <h2 id="list-title">Tasks</h2>
+                <div id="summary" aria-live="polite"></div>
+            </div>
+            <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <small>© 2025 Task Tracker Web App</small>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
