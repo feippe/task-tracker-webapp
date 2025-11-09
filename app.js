@@ -17,13 +17,16 @@ let state = {
 };
 
 function applyFilters(tasks) {
-  return tasks.filter(t => {
+  console.log('🔍 Applying filters:', { filterStatus: state.filterStatus, filterPriority: state.filterPriority });
+  const filtered = tasks.filter(t => {
     const statusOk = state.filterStatus === 'all'
       ? true
       : state.filterStatus === 'done' ? t.done : !t.done;
     const priorityOk = state.filterPriority === 'all' ? true : t.priority === state.filterPriority;
     return statusOk && priorityOk;
   });
+  console.log(`📊 Filtered ${filtered.length} of ${tasks.length} tasks`);
+  return filtered;
 }
 
 function render() {
@@ -95,8 +98,11 @@ $form.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = $title.value.trim();
   if (!title) return;
-  createTask(title, $priority.value);
+  const priority = $priority.value;
+  console.log('➕ Creating task:', { title, priority });
+  createTask(title, priority);
   state.tasks = readTasks();
+  console.log('📦 State after creating task:', { taskCount: state.tasks.length, filterStatus: state.filterStatus, filterPriority: state.filterPriority });
   $title.value = '';
   render();
 });
@@ -111,13 +117,20 @@ $filterPriority.addEventListener('change', (e) => {
   render();
 });
 
-// Clear all (con confirmación)
+// Clear filters button
 $clearAll.addEventListener('click', () => {
-  if (!confirm('This will delete all tasks. Continue?')) return;
-  localStorage.removeItem('TASK_TRACKER__TASKS');
-  state.tasks = readTasks();
+  state.filterStatus = 'all';
+  state.filterPriority = 'all';
+  $filterStatus.value = 'all';
+  $filterPriority.value = 'all';
   render();
 });
 
 // Init
+console.log('🚀 Initializing app...');
+console.log('Initial state:', state);
+console.log('Filter select DOM values:', { status: $filterStatus.value, priority: $filterPriority.value });
+$filterStatus.value = state.filterStatus;
+$filterPriority.value = state.filterPriority;
+console.log('After sync:', { status: $filterStatus.value, priority: $filterPriority.value });
 render();
